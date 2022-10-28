@@ -106,6 +106,14 @@
                         MiniGrid
                       </a>
                     </li>
+                    <li>
+                      <a href="https://robotics.farama.org">
+                        
+                        <img src="../../_static/img/gymrobotics-white.svg">
+                        
+                        Gymnasium-Robotics
+                      </a>
+                    </li>
                     
                   </ul>
                 </div>
@@ -118,14 +126,6 @@
                         <img src="../../_static/img/supersuit-white.svg">
                         
                         SuperSuit
-                      </a>
-                    </li>
-                    <li>
-                      <a href="https://github.com/Farama-Foundation/gym-robotics">
-                        
-                        <img src="../../_static/img/gymrobotics-white.svg">
-                        
-                        Gymnasium-Robotics
                       </a>
                     </li>
                     <li>
@@ -437,7 +437,7 @@
 <p class="caption" role="heading"><span class="caption-text">Development</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://github.com/Farama-Foundation/PettingZoo">Github</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://farama.org/donations">Donate</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/Farama-Foundation/PettingZoo/tree/master/docs/">Contribute to the Docs</a></li>
 </ul>
 
 </div>
@@ -489,11 +489,11 @@
 <section id="example-usage">
 <h2>Example Usage<a class="headerlink" href="#example-usage" title="Permalink to this heading">#</a></h2>
 <p>Environments can be interacted with as follows:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">parallel_env</span> <span class="o">=</span> <span class="n">pistonball_v1</span><span class="o">.</span><span class="n">parallel_env</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">parallel_env</span> <span class="o">=</span> <span class="n">pistonball_v6</span><span class="o">.</span><span class="n">parallel_env</span><span class="p">()</span>
 <span class="n">observations</span> <span class="o">=</span> <span class="n">parallel_env</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
 <span class="n">max_cycles</span> <span class="o">=</span> <span class="mi">500</span>
 <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_cycles</span><span class="p">):</span>
-    <span class="n">actions</span> <span class="o">=</span> <span class="p">{</span><span class="n">agent</span><span class="p">:</span> <span class="n">policy</span><span class="p">(</span><span class="n">observations</span><span class="p">[</span><span class="n">agent</span><span class="p">],</span> <span class="n">agent</span><span class="p">)</span> <span class="k">for</span> <span class="n">agent</span> <span class="ow">in</span> <span class="n">parallel_env</span><span class="o">.</span><span class="n">agents</span><span class="p">}</span>
+    <span class="n">actions</span> <span class="o">=</span> <span class="p">{</span><span class="n">agent</span><span class="p">:</span> <span class="n">parallel_env</span><span class="o">.</span><span class="n">action_space</span><span class="p">(</span><span class="n">agent</span><span class="p">)</span><span class="o">.</span><span class="n">sample</span><span class="p">()</span> <span class="k">for</span> <span class="n">agent</span> <span class="ow">in</span> <span class="n">parallel_env</span><span class="o">.</span><span class="n">agents</span><span class="p">}</span>  <span class="c1"># this is where you would insert your policy</span>
     <span class="n">observations</span><span class="p">,</span> <span class="n">rewards</span><span class="p">,</span> <span class="n">terminations</span><span class="p">,</span> <span class="n">truncations</span><span class="p">,</span> <span class="n">infos</span> <span class="o">=</span> <span class="n">parallel_env</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">actions</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -668,7 +668,7 @@ centralized training decentralized execution methods like QMIX</p>
         <div class="bottom-of-page">
           <div class="left-details">
             <div class="copyright">
-                Copyright &#169; 2022
+                Copyright &#169; 2022 Farama Foundation
             </div>
             <!--
             Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
@@ -798,5 +798,6 @@ centralized training decentralized execution methods like QMIX</p>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/sphinx_highlight.js"></script>
     <script src="../../_static/scripts/furo.js"></script>
+    
     </body>
 </html>
