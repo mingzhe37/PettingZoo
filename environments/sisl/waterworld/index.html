@@ -15,7 +15,7 @@
         <title>Waterworld - PettingZoo Documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=9ec31e2665bf879c1d47d93a8ec4893870ee1e45" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?digest=a614025deca43086db03c234d5a3a2047a0241ae" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?digest=6e5c1b8ed2a40fe812b456d29406f7f0a7f2228c" />
     
     
 
@@ -433,6 +433,13 @@
 <p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../tutorials/cleanrl/implementing_PPO/">CleanRL: Implementing PPO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/tianshou/beginner/">Tianshou: Basic API Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/tianshou/intermediate/">Tianshou: Training Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/tianshou/advanced/">Tianshou: CLI and Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/environmentcreation/1-project-structure/">(WIP) Creating Environments: Repository Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/environmentcreation/2-environment-logic/">(WIP) Creating Environments: Environment Logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/environmentcreation/3-action-masking/">(WIP) Creating Environments: Action Masking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/environmentcreation/4-testing-your-environment/">(WIP) Creating Environments: Testing Your Environment</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Development</span></p>
 <ul>
@@ -518,9 +525,6 @@
 </tbody>
 </table>
 </div>
-<figure class="align-default" id="id2">
-<a class="reference internal image-reference" href="../../../_images/sisl_waterworld_aec.svg"><img alt="../../../_images/sisl_waterworld_aec.svg" src="../../../_images/sisl_waterworld_aec.svg" width="200px" /></a>
-</figure>
 <p>Waterworld is a simulation of archea navigating and trying to survive in their environment. These archea, called pursuers attempt to consume food while avoiding poison. The agents in waterworld are the pursuers, while food and poison belong to the environment. Poison has a radius which is 0.75
 times the size of the pursuer radius, while food has a radius 2 times the size of the pursuer radius. Depending on the input parameters, multiple pursuers may need to work together to consume food, creating a dynamic that is both cooperative and competitive. Similarly, rewards can be distributed
 globally to all pursuers, or applied locally to specific pursuers. The environment is a continuous 2D space, and each pursuer has a position with x and y values each in the range [0,1]. Agents can not move beyond barriers at the minimum and maximum x and y values. Agents act by choosing a thrust

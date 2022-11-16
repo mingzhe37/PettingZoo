@@ -8,14 +8,14 @@
     <meta property="og:type" content="website" />
     <meta property="og:description" content="" />
     <meta property="og:url" content="https://pettingzoo.farama.org/tutorials/tianshou/beginner.html" /><meta name="twitter:card" content="summary_large_image"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-<link rel="index" title="Index" href="../../../genindex/" /><link rel="search" title="Search" href="../../../search/" />
+<link rel="index" title="Index" href="../../../genindex/" /><link rel="search" title="Search" href="../../../search/" /><link rel="next" title="Tianshou: Training Agents" href="../intermediate/" /><link rel="prev" title="CleanRL: Implementing PPO" href="../../cleanrl/implementing_PPO/" />
         <link rel="canonical" href="https://pettingzoo.farama.org/tutorials/tianshou/beginner.html" />
 
     <link rel="shortcut icon" href="../../../_static/favicon.png"/><meta name="generator" content="sphinx-5.3.0, furo 2022.09.15.dev1"/>
         <title>Tianshou: Basic API Usage - PettingZoo Documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=9ec31e2665bf879c1d47d93a8ec4893870ee1e45" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?digest=a614025deca43086db03c234d5a3a2047a0241ae" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?digest=6e5c1b8ed2a40fe812b456d29406f7f0a7f2228c" />
     
     
 
@@ -431,8 +431,15 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../environments/third_party_envs/">Third-Party Environments</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../cleanrl/implementing_PPO/">CleanRL: Implementing PPO</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Tianshou: Basic API Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intermediate/">Tianshou: Training Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced/">Tianshou: CLI and Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../environmentcreation/1-project-structure/">(WIP) Creating Environments: Repository Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../environmentcreation/2-environment-logic/">(WIP) Creating Environments: Environment Logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../environmentcreation/3-action-masking/">(WIP) Creating Environments: Action Masking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../environmentcreation/4-testing-your-environment/">(WIP) Creating Environments: Testing Your Environment</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Development</span></p>
 <ul>
@@ -488,8 +495,9 @@
 <section id="environment-setup">
 <h2>Environment Setup<a class="headerlink" href="#environment-setup" title="Permalink to this heading">#</a></h2>
 <p>To follow this tutorial, you will need to install the dependencies shown below. It is recommended to use a newly-created virtual environment to avoid dependency conflicts.</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>pettingzoo==1.22.0
-git+https://github.com/thu-ml/tianshou
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>pettingzoo[classic]==1.22.1
+packaging==21.3
+git+https://github.com/WillDudley/tianshou.git
 </pre></div>
 </div>
 </section>
@@ -515,10 +523,10 @@ git+https://github.com/thu-ml/tianshou
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="c1"># Step 1: Load the PettingZoo environment</span>
-    <span class="n">env</span> <span class="o">=</span> <span class="n">rps_v2</span><span class="o">.</span><span class="n">env</span><span class="p">()</span>
+    <span class="n">env</span> <span class="o">=</span> <span class="n">rps_v2</span><span class="o">.</span><span class="n">env</span><span class="p">(</span><span class="n">render_mode</span><span class="o">=</span><span class="s2">&quot;human&quot;</span><span class="p">)</span>
 
     <span class="c1"># Step 2: Wrap the environment for Tianshou interfacing</span>
-    <span class="n">env</span> <span class="o">=</span> <span class="n">PettingZooEnv</span><span class="p">(</span><span class="n">rps_v2</span><span class="o">.</span><span class="n">env</span><span class="p">())</span>
+    <span class="n">env</span> <span class="o">=</span> <span class="n">PettingZooEnv</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>
 
     <span class="c1"># Step 3: Define policies for each agent</span>
     <span class="n">policies</span> <span class="o">=</span> <span class="n">MultiAgentPolicyManager</span><span class="p">([</span><span class="n">RandomPolicy</span><span class="p">(),</span> <span class="n">RandomPolicy</span><span class="p">()],</span> <span class="n">env</span><span class="p">)</span>
@@ -541,8 +549,26 @@ git+https://github.com/thu-ml/tianshou
       <footer>
         
         <div class="related-pages">
-          
-            
+          <a class="next-page" href="../intermediate/">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Tianshou: Training Agents</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+            <a class="prev-page" href="../../cleanrl/implementing_PPO/">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">CleanRL: Implementing PPO</div>
+                
+              </div>
+            </a>
         </div>
         <div class="bottom-of-page">
           <div class="left-details">
